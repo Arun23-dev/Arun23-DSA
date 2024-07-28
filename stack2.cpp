@@ -1,24 +1,24 @@
 #include<bits/stdc++.h>
 using namespace std;
-void middle(stack<int> &st,int totalsize)
+void insertAtBottom(stack<int> &st,int x)
 {
 	if(st.size()==0)
-		return ;
-	if(totalsize/2+1==st.size())
 	{
-		cout<<"Middle element of the stack is "<<st.top();
-		return;
+		st.push(x);
+		return ;
 	}
-
+		
 	int temp=st.top();
 	st.pop();
 
 
 	//recursive call
-	middle(st,totalsize);
+	insertAtBottom(st,x);
 
 	//BT
 	st.push(temp);
+
+
 }
 int main()
 {
@@ -36,7 +36,13 @@ st.push(40);
 st.push(50);
 st.push(60);
 st.push(70);
-int totalsize=st.size();
-middle(st,totalsize);  
+
+insertAtBottom(st,0); 
+while(!st.empty())
+{
+	cout<<st.top()<<endl;;
+	st.pop();
+
+} 
 	return 0;
 }
